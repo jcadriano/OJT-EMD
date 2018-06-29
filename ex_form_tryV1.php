@@ -18,9 +18,9 @@
     <script src="../datepicker/MonthPicker.min.js"></script>
     <script src="../datepicker/examples.js"></script>
 
-
-    <script src="../jquery/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <script src="../jquery/bootstrap.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="../css/assyTrial.css">
     <script src="../jquery/sweetalert.js"></script>
 </head>
@@ -41,6 +41,16 @@
         //This uses the 'process' variable in a switch statement. If the process matches its case then the code inside it will execute. But if the process does not match any of the cases, it will return the default case. Every case has its respective 'include' that will link the php file to its case.
         switch ($process) {
             case 'Armature Assembly':
+                echo "<div id='date_and_year'>";
+                echo "<form action='ex_armature_search.php' method='POST'>";
+                echo "<label for='ImageButton'>Please select Month & Year</label>";
+                echo "<p>";
+                echo "<input id='ImageButton' name='selected_date' type='text' />";
+                echo "<button type='submit' class='formBtn btn btn-primary' name='select_lot'> Search </button>";
+                echo "</p>";
+                echo "</form>";
+                echo "</div>";
+
                 echo "<form id='formSubmit'>";
 
                 include 'ex_form_armature.php';
@@ -138,13 +148,16 @@
                             type: 'POST',
                             data: dataString.serialize(),
                             success: function(data) {
-                                swal (
-                                    'Great!',
-                                    'Record has been submitted.',
-                                    'success'
-                                )
+                                swal ({
+                                    title: 'Great!',
+                                    text: 'Record has been submitted.',
+                                    type: 'success',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
                                 
-                                $('#submittedRecord').load('submittedRecord.php').fadeIn('slow');
+                                // $('.submittedRecord').load('submittedRecord.php').fadeIn('slow');
+                                setTimeout(location.reload.bind(location),1500);
 
                                 $('#showDebug').html(data);
 

@@ -31,15 +31,21 @@
 		$max = max(count($split_arm_lotNum), count($split_arm_qty), count($split_mcp_lotNum), count($split_mcp_bagNum), count($split_mcp_qty), count($split_cs_lotNum), count($split_cs_qty));
 		// echo "<h1>" . $max . "</h1>";
 
-		echo "<tr>";
-		echo "<td rowspan='$max'>" . date("m-d-Y", strtotime($formatted_date)) . "</td>";
+		echo "<tr class='query'>";
+		echo "<td rowspan='$max'><p>" . date("m-d-Y", strtotime($formatted_date)) . "</p></td>";
 		echo "<td rowspan='$max'>" . $res['operator_name'] . "</td>";
-		echo "<td rowspan='$max'>" . $res['shift'] . "</td>";
+
+		if ($res['shift'] == 'Day Shift') {
+			echo "<td rowspan='$max' style='background-color: #FDDB54; color: #000000;'><p>" . $res['shift'] . "</p></td>";
+		} else {
+			echo "<td rowspan='$max' style='background-color: #000000; color: #FFFFFF;'>" . $res['shift'] . "</td>";
+		}
+
 		echo "<td rowspan='$max'>" . $res['relay_id'] . "</td>";
 		echo "<td rowspan='$max'>" . $res['lot_number'] . "</td>";
 		echo "<td rowspan='$max'>" . $res['quantity'] . "</td>";
      
-		for ($i=0; $i < $max; $i++) { 
+		for ($i=0; $i <= $max-1; $i++) { 
 			echo  "<td>" . $split_arm_lotNum[$i] . "</td>";
 			echo  "<td>" . $split_arm_qty[$i] . "</td>";
 			echo  "<td>" . $split_mcp_lotNum[$i] . "</td>";
@@ -47,92 +53,13 @@
 			echo  "<td>" . $split_mcp_qty[$i] . "</td>";
 			echo  "<td>" . $split_cs_lotNum[$i] . "</td>";
 			echo  "<td>" . $split_cs_qty[$i] . "</td>";
+			echo "</tr>";
+
+			echo "<tr class='query'>";
 
 			if ($i == $max) {
-				echo "<tr>";
-				echo  "<td>" . $split_arm_lotNum[$i] . "</td>";
-				echo  "<td>" . $split_arm_qty[$i] . "</td>";
-				echo  "<td>" . $split_mcp_lotNum[$i] . "</td>";
-				echo  "<td>" . $split_mcp_bagNum[$i] . "</td>";
-				echo  "<td>" . $split_mcp_qty[$i] . "</td>";
-				echo  "<td>" . $split_cs_lotNum[$i] . "</td>";
-				echo  "<td>" . $split_cs_qty[$i] . "</td>";
-				echo "</tr>";
-			} else {
 				echo "</tr>";
 			}
 		}
-
-		// foreach ($split_arm_lotNum as $value) {
-		// 	echo  "<td>" . $value . "</td>";
-		// 	echo "</td></tr>";
-		// }
-		
-		// foreach ($split_arm_qty as $value) {
-		// 	echo "<td>";
-		// 	echo  $value . "<br>";
-		// 	echo "</td>";
-		// }
-		
-		
-		// foreach ($split_mcp_lotNum as $value) {
-		// 	echo "<td>";
-		// 	echo  $value . "<br>";
-		// 	echo "</td>";
-		// }
-		
-		
-		// foreach ($split_mcp_bagNum as $value) {
-		// 	echo "<td>";
-		// 	echo  $value . "<br>";
-		// 	echo "</td>";
-		// }
-		
-		
-		// foreach ($split_mcp_qty as $value) {
-		// 	echo "<td>";
-		// 	echo  $value . "<br>";
-		// 	echo "</td>";
-		// }
-		
-		
-		// foreach ($split_cs_lotNum as $value) {
-		// 	echo "<td>";
-		// 	echo  $value . "<br>";
-		// 	echo "</td>";
-		// }
-		
-		
-		// foreach ($split_cs_qty as $value) {
-		// 	echo "<td>";
-		// 	echo  $value . "<br>";
-		// 	echo "</td>";
-		// }
-		
-
-		// echo "<td>" . $res['supplied_armature'] . "</td>";
-
-
-		// echo "<td>" . $res['armature_qty'] . "</td>";
-		// echo "<td>" . $res['supplied_contact_point'] . "</td>";
-		// echo "<td>" . $res['cp_bag_number'] . "</td>";
-		// echo "<td>" . $res['cp_quantity'] . "</td>";
-		// echo "<td>" . $res['supplied_contact_spring'] . "</td>";
-		// echo "<td>" . $res['contact_spring_quantity'] . "</td>";
-		// echo "</tr>";
-
-		// print_r($split);
 	}
-
-	
 ?>
-
-<!-- <script>
-	var x = document.getElementsByTagName('td');
-    for (var i = 1; i < x.length; i++) {
-        if (x[i].value == "") {
-            // x[i].disabled = true;
-            x[i].parentElement.style.visibility = 'hidden';
-        }
-    }
-</script> -->

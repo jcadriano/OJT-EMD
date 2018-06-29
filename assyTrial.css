@@ -5,7 +5,7 @@ body {
 
 table.sheet {
 	table-layout: auto;
-	border-collapse: collapse;
+	/*border-collapse: collapse;*/
 	margin-right: auto;
 	margin-left: auto;
 	clear: both;
@@ -115,10 +115,10 @@ table.sheet thead tr:nth-of-type(2) {
 	background-color: #FF9736;
 }
 
-td:empty {
-	background-color: black;
-}
+/*td:empty {
+	visibility: hidden;
+}*/
 
-table.sheet tbody tr{
-	padding-bottom: 1vw;
+tbody.submittedRecord tr.query {
+	background-color: #B9B9B9 ;
 }

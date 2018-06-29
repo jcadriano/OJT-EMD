@@ -1,13 +1,13 @@
 	<!-- This section is the set of buttons, and functions that can be found on top on the table form -->
 	<section class="above_table">
 		<!-- Asks the user to select a month and year. When the search button is clicked, it will display all the transactions on the said date -->
-		<div id="date_and_year">
-			<label for="ImageButton">Please select Month & Year</label>
+		
+			<!-- <label for="ImageButton">Please select Month & Year</label>
 			<p>
 				<input id="ImageButton" name='selected_date' type="text" />
 				<button type="button" class="formBtn btn btn-primary" name='select_lot' id="search"> Search </button>
-			</p>
-		</div>
+			</p> -->
+		<!-- </div> -->
 
 		<!-- Hidden input fields for line number and process -->
 		<input type='hidden' name='process' value='<?php echo $process;?>'>
@@ -175,6 +175,12 @@
                 return value.replace (/\D/g, "").replace (/\B(?=(\d{3})+(?!\d))/g, ",");
             });
         });
+
+        // =============================================| SEARCH |=============================================
+        // $('#search').on('click', function () {
+        // 	alert('Search clicked');
+        // 	window.location.href='ex_armature_search.php';
+        // });
 
 		// ===========================================| ARMATURE LOT NO. |===========================================
 		// $('#arm_addField').click (function () {
