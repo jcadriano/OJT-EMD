@@ -41,26 +41,27 @@
         //This uses the 'process' variable in a switch statement. If the process matches its case then the code inside it will execute. But if the process does not match any of the cases, it will return the default case. Every case has its respective 'include' that will link the php file to its case.
         switch ($process) {
             case 'Armature Assembly':
+                // Asks the user to select a month and year. When the search button is clicked, it will display all the transactions on the said date
                 echo "<div id='date_and_year'>";
-                echo "<form action='ex_armature_search.php' method='POST'>";
-                echo "<label for='ImageButton'>Please select Month & Year</label>";
-                echo "<p>";
-                echo "<input id='ImageButton' name='selected_date' type='text' />";
-                echo "<button type='submit' class='formBtn btn btn-primary' name='select_lot'> Search </button>";
-                echo "</p>";
-                echo "</form>";
+                    echo "<form action='ex_armature_search.php' method='POST'>";
+                        echo "<input type='hidden' name='process' value='$process'>";
+                        echo "<label for='ImageButton'>Please select Month & Year</label>";
+                        echo "<p>";
+                            echo "<input id='ImageButton' name='selected_date' type='text' />";
+                            echo "<button type='submit' class='formBtn btn btn-primary' name='select_lot'> Search </button>";
+                        echo "</p>";
+                    echo "</form>";
                 echo "</div>";
 
+                // Display the form using the include function.
                 echo "<form id='formSubmit'>";
-
-                include 'ex_form_armature.php';
-
-
-                echo "<button id='submitBtn' type='submit' class='formBtn btn btn-success btn-lg' name='submit'> Submit </button>";
+                    include 'ex_form_armature.php';
+                    echo "<button id='submitBtn' type='submit' class='formBtn btn btn-success btn-lg' name='submit'> Submit </button>";
                 echo "</form>";
 
-                echo "<div id='showDebug'>";
-                echo "</div>";
+                // Div section that shows the warnings and 
+                // echo "<div id='showDebug'>";
+                // echo "</div>";
                 break;
 
             case 'M&A Assembly':
@@ -126,7 +127,7 @@
                 event.preventDefault();
                 swal ({
                     title: 'Are you sure?',
-                    text: "You won't be able to revert this.",
+                    text: "Some fields can not be modified.",
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Yes, submit!'
@@ -156,7 +157,6 @@
                                     timer: 1500
                                 });
                                 
-                                // $('.submittedRecord').load('submittedRecord.php').fadeIn('slow');
                                 setTimeout(location.reload.bind(location),1500);
 
                                 $('#showDebug').html(data);

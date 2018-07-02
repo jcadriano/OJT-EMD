@@ -10,8 +10,6 @@
 	$line_no = $_POST['line_no'];
 	$processSwitch = $_POST['process'];
 
-	// echo "===> " . $processSwitch . " <=== <br>";
-
 	switch ($processSwitch) {
 		case 'Armature Assembly':
 			$armArray = $_POST['arm_lotNum'];
@@ -41,7 +39,7 @@
 			$cs_value = implode("*", $csArray);
 			$csQty_value = implode("*", $csQtyArray);
 
-
+			// Insert the input values into the database, alert when something goes wrong
 			$insert_toDB =  "INSERT INTO assembly_armatureassy_tbl (relay_id, line_no, month, year, date, operator_name, shift, lot_number, quantity, supplied_armature, armature_qty, supplied_contact_point, cp_bag_number, cp_quantity, supplied_contact_spring, contact_spring_quantity) VALUES ('$relay_id', '$line_no', '$month', '$year', '$date', '$optr_name', '$shift', '$lot_no', '$qty', '$arm_value', '$armQty_value', '$mcp_value', '$mcpBag_value', '$mcpQty_value', '$cs_value', '$csQty_value')"; 
 
 			mssql_query($insert_toDB) or die ("<script> swal ('Oops..', 'Something went wrong. Please contact the IT Group.', 'error') </script>");

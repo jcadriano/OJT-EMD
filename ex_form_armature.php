@@ -1,14 +1,5 @@
 	<!-- This section is the set of buttons, and functions that can be found on top on the table form -->
 	<section class="above_table">
-		<!-- Asks the user to select a month and year. When the search button is clicked, it will display all the transactions on the said date -->
-		
-			<!-- <label for="ImageButton">Please select Month & Year</label>
-			<p>
-				<input id="ImageButton" name='selected_date' type="text" />
-				<button type="button" class="formBtn btn btn-primary" name='select_lot' id="search"> Search </button>
-			</p> -->
-		<!-- </div> -->
-
 		<!-- Hidden input fields for line number and process -->
 		<input type='hidden' name='process' value='<?php echo $process;?>'>
 		<input type='hidden' name='line_no' value='<?php echo $lineNum;?>'>
@@ -19,10 +10,6 @@
 			<button type="button" id="delRow" class="formBtn btn btn-danger"> Delete Row </button>
 		</div>
 	</section>
-
-	<div id="">
-		
-	</div>
 
 	<table class="sheet">
 	<thead>
