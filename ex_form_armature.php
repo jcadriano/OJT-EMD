@@ -120,18 +120,6 @@
 
             $('.expand').attr('rowspan', rowspan);
             $('.sheet tr:eq(-1)').after(newRow); //add new row at end
-
-            // add commas for added rows
-            $('input.number').keyup(function(event) {
-
-                // skip for arrow keys
-                if(event.which >= 37 && event.which <= 40) return;
-
-                // format number
-                $(this).val(function(index, value) {
-                    return value.replace (/\D/g, "").replace (/\B(?=(\d{3})+(?!\d))/g, ",");
-                });
-            });
 		});
 
 		// ===========================================| DELETE ROW |===========================================\

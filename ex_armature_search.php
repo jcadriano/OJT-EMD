@@ -195,10 +195,10 @@
 					        			echo "</div>";
 
 					        			
-					        			echo "<div class='form-group row'>";
+					        			echo "<div class='form-group row' id='arm_lotNum'>";
 					        				echo "<label for='arm_lotNumNew' class='col-sm-3 col-form-label'> Armature Lot Number: </label>";
 					        				echo "<div class='col-sm-1'>";
-					        					echo "<button type='button' class='add btn btn-info btn-sm'> + </button>";
+					        					echo "<button type='button' id='add_armLotNum' class='btn btn-info btn-sm'> + </button>";
 					        					echo "<button type='button' class='btn btn-danger btn-sm'>  -  </button>";
 					        				echo "</div>";
 					        				echo "<div class='col-sm-8'>";
@@ -313,8 +313,11 @@
 			});
 		});
 
-		$('.add').on('click', function () {
+		$('#add_armLotNum').on('click', function () {
 			alert('add button clicked');
+			var newInput = "<input type='text' name='arm_lotNumNew[]' class='form-control' value='1'>";
+
+			$('#arm_lotNum input:eq(-1)').after(newInput);
 		});
 	</script>
 
